@@ -19,14 +19,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Выберите нужную версию Python
+          python-version: '3.12'  # Укажите нужную версию Python
+
+      - name: Install system dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y apturl
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pycodestyle  # Предварительная установка pycodestyle
+          pip install pycodestyle
 
       - name: Check for PEP 8 compliance
         run: |
-          pycodestyle your_script.py || exit 1  # Скрипт завершится с ошибкой, если есть ошибки
+          pycodestyle your_script.py || exit 1
 
