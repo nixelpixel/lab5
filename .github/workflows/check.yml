@@ -25,5 +25,5 @@ jobs:
 
       - name: Run pycodestyle
         run: |
-          pycodestyle todo.py || true
+          pycodestyle todo.py 
 
