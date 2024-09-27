@@ -1,10 +1,17 @@
-name: Check Code Style
+name: Check Python Code Style
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  check:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -12,15 +19,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.8'  # Выберите нужную версию Python
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pycodestyle
+          pip install pycodestyle  # Предварительная установка pycodestyle
 
-      - name: Check code style
+      - name: Check for PEP 8 compliance
         run: |
-          pycodestyle your_script.py
+          pycodestyle your_script.py || exit 1  # Скрипт завершится с ошибкой, если есть ошибки
 
