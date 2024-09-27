@@ -30,7 +30,7 @@ class ToDoList:
         """Помечает задачу как выполненную."""
         try:
             self.tasks[index]["completed"] = True
-            print(f"Задача '{self.tasks[index]['task']}' помечена как выполненная.")
+            print(f"Задача '{self.tasks[index]['task']}' Выполнена.")
         except IndexError:
             print("Задача не найдена.")
 
