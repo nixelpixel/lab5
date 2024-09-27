@@ -1,5 +1,6 @@
 import json
 
+
 class ToDoList:
     def __init__(self):
         """Инициализация списка задач."""
@@ -20,12 +21,12 @@ class ToDoList:
         with open(file_path, 'w') as file:
             json.dump(self.tasks, file, indent=4)
 
-    def add_task(self,task):
+    def add_task(self, task):
         """Добавляет новую задачу в список."""
         self.tasks.append({"task": task, "completed": False})
         print(f"Задача '{task}' добавлена.")
 
-    def complete_task(self,index):
+    def complete_task(self, index):
         """Помечает задачу как выполненную."""
         try:
             self.tasks[index]["completed"] = True
@@ -46,15 +47,16 @@ class ToDoList:
         if not self.tasks:
             print("Список задач пуст.")
             return
-        
-        for index,task in enumerate(self.tasks):
+
+        for index, task in enumerate(self.tasks):
             status = "✓" if task["completed"] else "✗"
             print(f"{index + 1}. [{status}] {task['task']}")
+
 
 def main():
     todo_list = ToDoList()
     todo_list.load_tasks('tasks.json')
-    
+
     while True:
         print("\nМеню:")
         print("1. Добавить задачу")
@@ -85,6 +87,8 @@ def main():
         else:
             print("Неверный выбор. Пожалуйста, попробуйте снова.")
 
+
 if __name__ == "__main__":
     main()
+
 
