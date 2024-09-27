@@ -3,7 +3,7 @@ name: Python Code Style Check
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   lint:
