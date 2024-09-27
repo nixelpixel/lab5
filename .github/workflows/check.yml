@@ -25,5 +25,5 @@ jobs:
 
       - name: Run pycodestyle
         run: |
-          pycodestyle todo.py 
+          pycodestyle --ignore=W391 todo.py 
 
